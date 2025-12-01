@@ -78,7 +78,7 @@ class BaseLogin:
             if os.path.exists(captcha_path):
                 os.remove(captcha_path)
             print(f"识别到的验证码结果: {captcha_result}")
-            login_data = {'username': '13266769662','password': 'Imzl1107','validateCode': captcha_result,'rememberMe': 'false'}
+            login_data = {'username': '18029131603','password': 'Imzl1107','validateCode': captcha_result,'rememberMe': 'false'}
             login_response = session.post('https://www.gxkj123456.com/tgc/login', headers=login_headers, data=login_data, timeout=5)
             if login_response.status_code == 200:
                 jsessionid = login_response.cookies.get('JSESSIONID')
@@ -97,3 +97,8 @@ class BaseLogin:
         except Exception as e:
             print(f"登录过程发生异常: {str(e)}")
             return False
+
+
+if __name__ == '__main__':
+    base_login = BaseLogin()
+    base_login.login_with_captcha(None)
